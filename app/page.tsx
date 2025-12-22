@@ -1,5 +1,7 @@
 import Image from "next/image";
 import logo from "../public/assets/images/logo.svg"
+import SearchButton from "./components/SearchButton";
+import SearchBox from "./components/SearchBox";
 
 export default function Home() {
   return (
@@ -14,6 +16,11 @@ export default function Home() {
 
       </div>
       <h1 className="text-center text-white text-4xl font-bold mt-10 ">How's the sky looking today?</h1>
+
+      <div className="w-full flex justify-center gap-4 mt-10">
+        <SearchBox />
+        <SearchButton />
+      </div>
      
     </div>
   );
