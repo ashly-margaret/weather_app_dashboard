@@ -35,6 +35,7 @@ export default function Home() {
     const [selectedDayIndex, setSelectedDayIndex] = useState(0);
     const [hasSearched, setHasSearched] = useState(false);
     const [isSearching, setIsSearching] = useState(false);
+    const [showUnitDropdown, setShowUnitDropdown] = useState(false);
 
     const [units, setUnits] = useState({
         temp: 'C', // 'C' | 'F'
@@ -174,14 +175,21 @@ export default function Home() {
         </div>
         
         {/* Unit Switcher */}
-        <div className="relative group z-[60]">
-             <button className="bg-[#2F2F49] hover:bg-[#3E3E5E] text-white px-4 py-2 rounded-xl flex items-center gap-2 transition-colors">
+        <div className="relative z-[60]">
+             <button 
+                onClick={() => setShowUnitDropdown(!showUnitDropdown)}
+                className="bg-[#2F2F49] hover:bg-[#3E3E5E] text-white px-4 py-2 rounded-xl flex items-center gap-2 transition-colors"
+             >
                 <Image src={iconUnits} alt="Units" width={20} height={20} />
                 <span>Units</span>
              </button>
              
-             <div className="absolute top-full right-0 mt-2 w-64 bg-[#24243E] border border-[#c0c7d42e] rounded-xl shadow-xl p-4 hidden group-hover:block">
-                 <h6 className="text-[#c0c7d4] text-xs font-semibold mb-3 uppercase tracking-wider">Switch Units</h6>
+             {showUnitDropdown && (
+             <div className="absolute top-full right-0 mt-2 w-64 bg-[#24243E] border border-[#c0c7d42e] rounded-xl shadow-xl p-4">
+                 <div className="flex justify-between items-center mb-3">
+                    <h6 className="text-[#c0c7d4] text-xs font-semibold uppercase tracking-wider">Switch Units</h6>
+                    <button onClick={() => setShowUnitDropdown(false)} className="text-gray-400 hover:text-white">✕</button>
+                 </div>
                  
                  {/* Temperature */}
                  <div className="mb-4">
@@ -229,6 +237,7 @@ export default function Home() {
                  </div>
 
              </div>
+             )}
         </div>
 
       </div>
