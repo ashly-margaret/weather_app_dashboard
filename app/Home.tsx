@@ -303,16 +303,17 @@ export default function Home() {
              <>
             <Image src={bgtodaydesk} alt="bg-today-large" className="object-cover w-full h-full" />
             <div className="absolute top-0 left-0 w-full h-full p-8 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                    <div className="flex flex-col gap-2">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
+                    <div className="flex flex-col gap-2 text-center md:text-left">
                         <h2 className="text-white text-2xl md:text-3xl font-bold">{selectedLocation?.name ?? "Select a City"}</h2>
                          {selectedLocation?.country && <p className="text-gray-200 text-sm">{selectedLocation.country}</p>}
                         <p className="text-gray-300 text-sm">
                             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' })}
                         </p>
                     </div>
-                     <div className="flex items-center gap-2">
-                          <span className="text-white text-4xl md:text-6xl font-bold">
+                     <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                        {/* We could add an icon here if available in the design, currently design has icon next to temp */}
+                          <span className="text-white text-6xl md:text-6xl font-bold">
                              {weather?.current?.temperature_2m ? convertTemp(weather.current.temperature_2m) : '--'}°
                          </span>
                         {/* Weather Icon/Condition could go here */}
@@ -351,7 +352,7 @@ export default function Home() {
         </div>
         <div>
           <h6 className="mb-4 text-white">Daily forecast</h6>
-          <div className="flex gap-4 overflow-x-auto pb-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:flex lg:gap-4 lg:overflow-x-auto pb-4 gap-3">
             {loading || !weather ? (
                  Array(7).fill(0).map((_, i) => (
                     <Skeleton key={i} className="min-w-[100px] h-[160px] flex-shrink-0" />
