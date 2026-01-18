@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather Now 🌤️
 
-## Getting Started
+A beautiful, responsive, and dynamic weather application built with Next.js and Tailwind CSS. **Weather Now** provides real-time weather updates, detailed forecasts, and immersive background animations that reflect the current sky conditions.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-time Weather Data**: Get current temperature, "feels like", humidity, wind speed, and precipitation.
+- **Dynamic Backgrounds**: Immersive, animated backgrounds that change based on weather conditions (Sunny, Rainy, Snowy, Cloudy, Stormy).
+- **Hourly & Daily Forecasts**: Explore the weather for the next 24 hours and the upcoming week.
+- **Day Selection**: Filter hourly forecasts by selecting a specific day from the daily list.
+- **Smart Search**: Search for any city worldwide with instant results and a "Search in progress" indicator.
+- **Unit Conversion**: Toggle between Celsius/Fahrenheit, km/h/mph, and mm/in measurements.
+- **Responsive Design**: Fully optimized UI that adapts seamlessly from mobile devices to large desktop screens.
+- **Robust Error Handling**: Friendly UI states for API errors and empty search results.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/) (React)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: Custom SVG & WebP assets
+- **Font**: Standard Sans-Serif (Geist/Inter compatible)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📡 API Endpoints
 
-## Learn More
+This project uses the free and open-source **Open-Meteo API** for weather data and geocoding. No API key is required.
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Weather Data (Forecast)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fetches current, hourly, and daily weather data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Endpoint**: `https://api.open-meteo.com/v1/forecast`
+- **Method**: `GET`
+- **Parameters**:
+  - `latitude`, `longitude`: Coordinates of the location.
+  - `current`: `temperature_2m`, `relative_humidity_2m`, `apparent_temperature`, `precipitation`, `weather_code`, `wind_speed_10m`
+  - `hourly`: `temperature_2m`, `weather_code`
+  - `daily`: `weather_code`, `temperature_2m_max`, `temperature_2m_min`
+  - `timezone`: `auto`
 
-## Deploy on Vercel
+### 2. Geocoding (Search)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Searches for locations by name.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Endpoint**: `https://geocoding-api.open-meteo.com/v1/search`
+- **Method**: `GET`
+- **Parameters**:
+  - `name`: City name to search for.
+  - `count`: Number of results (default 10).
+  - `language`: `en`
+  - `format`: `json`
+
+## 🚀 Getting Started
+
+1.  **Clone the repository**:
+
+    ```bash
+    git clone https://github.com/your-username/weather-now.git
+    cd weather-now
+    ```
+
+2.  **Install dependencies**:
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Run the development server**:
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open in your browser**:
+    Visit [http://localhost:3000](http://localhost:3000) to see the app in action.
+
+## 🎨 Credits
+
+Designed and developed with a focus on simplicity and user experience.
+
+---
+
+_Built with ❤️ by [Ashly Margaret]_
