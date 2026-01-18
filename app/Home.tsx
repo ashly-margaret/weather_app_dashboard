@@ -36,6 +36,11 @@ export default function Home() {
     const [hasSearched, setHasSearched] = useState(false);
     const [isSearching, setIsSearching] = useState(false);
     const [showUnitDropdown, setShowUnitDropdown] = useState(false);
+    const [currentDate, setCurrentDate] = useState('');
+
+    useEffect(() => {
+        setCurrentDate(new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' }));
+    }, []);
 
     const [units, setUnits] = useState({
         temp: 'C', // 'C' | 'F'
@@ -316,8 +321,9 @@ export default function Home() {
                     <div className="flex flex-col gap-2 text-center md:text-left">
                         <h2 className="text-white text-2xl md:text-3xl font-bold">{selectedLocation?.name ?? "Select a City"}</h2>
                          {selectedLocation?.country && <p className="text-gray-200 text-sm">{selectedLocation.country}</p>}
+
                         <p className="text-gray-300 text-sm">
-                            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' })}
+                            {currentDate}
                         </p>
                     </div>
                      <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
