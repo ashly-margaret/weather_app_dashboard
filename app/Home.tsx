@@ -248,8 +248,8 @@ export default function Home() {
       </div>
       <h1 className="text-center text-white text-2xl md:text-4xl font-bold mt-6 ">How's the sky looking today?</h1>
 
-      <div className="w-full flex justify-center gap-4 mt-10 relative z-50">
-        <div className="relative">
+       <div className="w-full flex flex-col md:flex-row justify-center gap-4 mt-10 relative z-50">
+         <div className="relative w-full md:w-[400px]">
           <SearchBox handleSearch={handleSearch} />
           {locations.length > 0 && (
             <ul className="absolute top-full left-0 w-full bg-[#24243E] rounded-md mt-2 max-h-60 overflow-y-auto z-10 shadow-lg border border-[#c0c7d42e]">
